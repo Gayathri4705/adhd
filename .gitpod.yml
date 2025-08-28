@@ -14,7 +14,7 @@ tasks:
       # Add FSL env vars
       echo "export FSLDIR=/usr/local/fsl" >> ~/.bashrc
       echo "source $FSLDIR/etc/fslconf/fsl.sh" >> ~/.bashrc
-      echo "PATH=$FSLDIR/bin:\$PATH" >> ~/.bashrc
+      echo "PATH=$FSLDIR/bin:$PATH" >> ~/.bashrc
       echo "export PATH" >> ~/.bashrc
       source ~/.bashrc
 
