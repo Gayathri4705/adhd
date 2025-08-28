@@ -7,25 +7,28 @@ tasks:
       # Install FSL
       wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
       python3 fslinstaller.py <<EOF
-      y
-      y
+      /usr/local
+
       EOF
 
       # Add FSL env vars
       echo "export FSLDIR=/usr/local/fsl" >> ~/.bashrc
-      echo "source \$FSLDIR/etc/fslconf/fsl.sh" >> ~/.bashrc
-      echo "export PATH=\$FSLDIR/bin:\$PATH" >> ~/.bashrc
+      echo "source $FSLDIR/etc/fslconf/fsl.sh" >> ~/.bashrc
+      echo "PATH=$FSLDIR/bin:\$PATH" >> ~/.bashrc
+      echo "export PATH" >> ~/.bashrc
       source ~/.bashrc
 
       # Install Miniconda
       wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
       bash miniconda.sh -b -p $HOME/miniconda
       eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+      conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
+      conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
       conda init bash
 
       # Create ANTs env
       conda create -n ants -c conda-forge ants -y
-
+      conda activate ants
     command: |
       echo "✅ FSL and ANTs installed"
       bash

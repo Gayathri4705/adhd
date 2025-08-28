@@ -1,0 +1,18 @@
+1 /home/drcc/ADHD200/Pittsburgh/0016001
+/home/drcc/ADHD200/Pittsburgh/0016001 parsed into 0016001
+processing session_1
+/home/drcc/ADHD200/Pittsburgh/0016001/session_1//anat_1/mprage_noface.nii.gz found! processing...
+wssd0016001_session_1_anat_csf.nii.gz and wssd0016001_session_1_anat_wm.nii.gz already exist
+/home/drcc/ADHD200/Pittsburgh/0016001/session_1//rest_1//rest.nii.gz found, processing ...
+snwmrda0016001_session_1_rest_1.nii.gz and sfnwmrda0016001_session_1_rest_1.nii.gz already exist
+++ 3dTstat: AFNI version=AFNI_2009_12_31_1431 (Aug 26 2010) [64-bit]
+++ Authored by: KR Hammett & RW Cox
+++ Output dataset ./rm_falff_num_0016001_session_1_rest_1.nii.gz
+++ 3dTstat: AFNI version=AFNI_2009_12_31_1431 (Aug 26 2010) [64-bit]
+++ Authored by: KR Hammett & RW Cox
+++ Output dataset ./rm_falff_denom_0016001_session_1_rest_1.nii.gz
+++ 3dcalc: AFNI version=AFNI_2009_12_31_1431 (Aug 26 2010) [64-bit]
+++ Authored by: A cast of thousands
+++ Output dataset ./falff_0016001_session_1_rest_1.nii.gz
+ snwmrda0016001_session_1_rest_1_TCs.1D already extracted timecourses in template space
+fc_snwmrda0016001_session_1_rest_1.nii.gz already exists
