@@ -20,13 +20,4 @@ tasks:
     command: |
       # The bash shell in the Gitpod terminal will automatically source ~/.bashrc,
       # making FSL commands available here.
-      echo "✅ FSL and ANTs installed"
-      echo "---"
-      ant -version
-      echo "---"
-      bet -h
-      fslmaths -h
-      fast -h
-      flirt -version
-      echo "---"
       bash
