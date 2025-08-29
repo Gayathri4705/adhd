@@ -6,18 +6,20 @@ tasks:
     init: |
       # Install ANTs
       wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
+      
+      # Install FSL
+      curl -sSL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -o fslinstaller.py
+      
+    command: |
       tar -xvzf apache-ant-1.10.14-bin.tar.gz
       sudo mv apache-ant-1.10.14 /opt/ant
       echo 'export ANT_HOME=/opt/ant' | sudo tee -a /etc/profile
       echo 'export PATH=$ANT_HOME/bin:$PATH' | sudo tee -a /etc/profile
       source /etc/profile
-      # Install FSL
-      curl -sSL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -o fslinstaller.py
       python fslinstaller.py --dest=/usr/local/fsl
       echo "FSLDIR=/usr/local/fsl" >> ~/.bashrc
       echo ". /usr/local/fsl/etc/fslconf/fsl.sh" >> ~/.bashrc
       echo "export FSLDIR" >> ~/.bashrc
-    command: |
       # The bash shell in the Gitpod terminal will automatically source ~/.bashrc,
       # making FSL commands available here.
       bash
