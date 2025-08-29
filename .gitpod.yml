@@ -5,12 +5,16 @@ tasks:
   - name: Setup FSL + ANTs
     init: |
       # Install FSL
-      wget https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py
-      python3 fslinstaller.py <<EOF
-      /usr/local/fsl
-      
+      # Download installer
+      curl -sSL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -o fslinstaller.py
 
-      EOF
+      # Run in headless mode (no GUI)
+      python fslinstaller.py --skip_registration --dest=/usr/local/fsl
+
+      echo "FSLDIR=/usr/local/fsl" >> ~/.bashrc
+      echo "PATH=\$FSLDIR/bin:\$PATH" >> ~/.bashrc
+      echo "export FSLDIR PATH" >> ~/.bashrc
+      source ~/.bashrc
 
       # Add FSL env vars
       echo "export FSLDIR=/usr/local/fsl" >> ~/.bashrc
@@ -19,17 +23,15 @@ tasks:
       echo "export PATH" >> ~/.bashrc
       source ~/.bashrc
 
-      # Install Miniconda
-      wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
-      bash miniconda.sh -b -p $HOME/miniconda
-      eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-      conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main
-      conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r
-      conda init bash
+      # Install ANTs
+      wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
+      tar -xvzf apache-ant-1.10.14-bin.tar.gz
+      sudo mv apache-ant-1.10.14 /opt/ant
+      echo 'export ANT_HOME=/opt/ant' | sudo tee -a /etc/profile
+      echo 'export PATH=$ANT_HOME/bin:$PATH' | sudo tee -a /etc/profile
+      source /etc/profile
 
-      # Create ANTs env
-      conda create -n ants -c conda-forge ants -y
-      conda activate ants
+
     command: |
       echo "✅ FSL and ANTs installed"
       bash
