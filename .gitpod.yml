@@ -27,4 +27,8 @@ tasks:
 
     command: |
       echo "✅ FSL and ANTs installed"
+      ant -version
+      bet --version       # Brain Extraction Tool
+      fslmaths --version  # FSL maths
+      fast --version      # Segmentation
       bash
