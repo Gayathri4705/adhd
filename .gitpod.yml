@@ -16,13 +16,6 @@ tasks:
       echo "export FSLDIR PATH" >> ~/.bashrc
       source ~/.bashrc
 
-      # Add FSL env vars
-      echo "export FSLDIR=/usr/local/fsl" >> ~/.bashrc
-      echo "source $FSLDIR/etc/fslconf/fsl.sh" >> ~/.bashrc
-      echo "PATH=$FSLDIR/bin:$PATH" >> ~/.bashrc
-      echo "export PATH" >> ~/.bashrc
-      source ~/.bashrc
-
       # Install ANTs
       wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
       tar -xvzf apache-ant-1.10.14-bin.tar.gz
