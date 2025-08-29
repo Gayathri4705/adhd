@@ -2,7 +2,7 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - name: Setup FSL + ANTs
+  - name: Install FSL and ANTs
     init: |
       # Install ANTs
       wget https://downloads.apache.org/ant/binaries/apache-ant-1.10.14-bin.tar.gz
@@ -11,23 +11,22 @@ tasks:
       echo 'export ANT_HOME=/opt/ant' | sudo tee -a /etc/profile
       echo 'export PATH=$ANT_HOME/bin:$PATH' | sudo tee -a /etc/profile
       source /etc/profile
-
       # Install FSL
-      # Download installer
       curl -sSL https://fsl.fmrib.ox.ac.uk/fsldownloads/fslinstaller.py -o fslinstaller.py
-
-      # Run in headless mode (no GUI)
       python fslinstaller.py --dest=/usr/local/fsl
-
       echo "FSLDIR=/usr/local/fsl" >> ~/.bashrc
       echo ". ${FSLDIR}/etc/fslconf/fsl.sh" >> ~/.bashrc
       echo "export FSLDIR" >> ~/.bashrc
-      source ~/.bashrc
     command: |
+      # The bash shell in the Gitpod terminal will automatically source ~/.bashrc,
+      # making FSL commands available here.
       echo "✅ FSL and ANTs installed"
+      echo "---"
       ant -version
-      bet -h       # Brain Extraction Tool
-      fslmaths -h  # FSL maths
-      fast -h      # Segmentation
+      echo "---"
+      bet -h
+      fslmaths -h
+      fast -h
       flirt -version
+      echo "---"
       bash
