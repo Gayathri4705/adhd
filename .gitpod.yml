@@ -17,7 +17,7 @@ tasks:
       
     command: |
       echo "FSLDIR=/usr/local/fsl" >> ~/.bashrc
-      echo ". ${FSLDIR}/etc/fslconf/fsl.sh" >> ~/.bashrc
+      echo ". /usr/local/fsl/etc/fslconf/fsl.sh" >> ~/.bashrc
       echo "export FSLDIR" >> ~/.bashrc
       # The bash shell in the Gitpod terminal will automatically source ~/.bashrc,
       # making FSL commands available here.
